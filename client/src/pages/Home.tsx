@@ -1,13 +1,10 @@
-import { motion } from "framer-motion";
 import { 
   Bot, 
   Database, 
   MessageSquareText, 
   BrainCircuit, 
-  Sparkles, 
   ArrowRight, 
-  CheckCircle2,
-  ChevronDown
+  CheckCircle2
 } from "lucide-react";
 
 import { Navigation } from "@/components/Navigation";
@@ -65,36 +62,22 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[100px] animate-pulse delay-1000" />
-        
+      <section className="relative min-h-screen flex items-center justify-center pt-20">
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-gray-300">The Future of Work is Here</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+          <div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
               Build the Future with <br />
-              <span className="text-gradient">Intelligent Agents</span>
+              <span className="text-primary">Intelligent Agents</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
               We engineer custom AI automation systems that scale your business, reduce costs, and work while you sleep.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-full text-lg shadow-[0_0_30px_rgba(139,90,215,0.4)] hover:shadow-[0_0_50px_rgba(139,90,215,0.6)] transition-all"
+                className="bg-primary hover:bg-primary/80 text-white px-8 h-14 rounded-lg text-lg shadow-lg transition-all"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Start Automating <ArrowRight className="ml-2 w-5 h-5" />
@@ -102,22 +85,18 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-white/20 hover:bg-white/5 text-white h-14 px-8 rounded-full text-lg backdrop-blur-sm"
+                className="border-primary/50 text-white hover:bg-primary/5 h-14 px-8 rounded-lg text-lg"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 View Services
               </Button>
             </div>
-          </motion.div>
-        </div>
-
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-white/30" />
+          </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 border-y border-white/5 bg-black/20 backdrop-blur-sm">
+      <section className="py-20 border-y border-white/10 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -126,17 +105,10 @@ export default function Home() {
               { label: "Tasks Automated", value: "1M+" },
               { label: "Client Satisfaction", value: "99%" },
             ].map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
+              <div key={i} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
                 <div className="text-primary text-sm uppercase tracking-wider font-medium">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -161,20 +133,13 @@ export default function Home() {
       </section>
 
       {/* Custom Solutions Section */}
-      <section id="solutions" className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section id="solutions" className="py-32">
+        <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Need Something <span className="text-primary">Unique?</span></h2>
-              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                Off-the-shelf solutions rarely fit complex workflows. We specialize in custom architecture. 
-                Whether you need a proprietary LLM trained on your data or an autonomous agent swarm, we build it.
+            <div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">Need Something <span className="text-primary">Unique?</span></h2>
+              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                Off-the-shelf solutions rarely fit complex workflows. We specialize in custom architecture. Whether you need a proprietary LLM trained on your data or an autonomous agent swarm, we build it.
               </p>
               
               <ul className="space-y-4 mb-10">
@@ -193,28 +158,18 @@ export default function Home() {
 
               <Button 
                 variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary/10 h-12 px-8 rounded-full"
+                className="border-primary/50 text-white hover:bg-primary/10 h-12 px-8 rounded-lg"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Discuss Your Vision
               </Button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary to-background border border-white/10 p-8 flex items-center justify-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-[shimmer_3s_infinite]" />
-                <BrainCircuit className="w-64 h-64 text-white/5 group-hover:text-primary/20 transition-colors duration-500" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="w-32 h-32 bg-primary/20 rounded-full blur-[50px] animate-pulse" />
-                </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl bg-secondary/30 border border-white/10 p-8 flex items-center justify-center relative overflow-hidden">
+                <BrainCircuit className="w-64 h-64 text-white/10 transition-colors duration-300" />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

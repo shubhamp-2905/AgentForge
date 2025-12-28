@@ -43,11 +43,8 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/50 blur-lg rounded-full group-hover:bg-primary/80 transition-all" />
-            <Cpu className="w-8 h-8 text-white relative z-10" />
-          </div>
-          <span className="text-xl font-bold tracking-wider text-white group-hover:text-primary transition-colors">
+          <Cpu className="w-8 h-8 text-primary" />
+          <span className="text-xl font-bold tracking-wider text-white">
             AGENT<span className="text-primary">FORGE</span>
           </span>
         </Link>
@@ -64,14 +61,13 @@ export function Navigation() {
                   handleNavClick(link.href);
                 }
               }}
-              className="text-sm font-medium text-gray-300 hover:text-white hover:glow-text transition-all relative group"
+              className="text-sm font-medium text-gray-300 hover:text-white transition-all"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
             </a>
           ))}
           <Button 
-            className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-[0_0_20px_rgba(139,90,215,0.3)] hover:shadow-[0_0_30px_rgba(139,90,215,0.6)] transition-all"
+            className="bg-primary hover:bg-primary/80 text-white rounded-lg px-6 transition-all"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Book Demo <Rocket className="ml-2 w-4 h-4" />
