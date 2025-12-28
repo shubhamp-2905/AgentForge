@@ -28,13 +28,14 @@ export function ContactForm() {
   }
 
   return (
-    <div className="glass-panel p-8 rounded-2xl relative overflow-hidden">
-      {/* Decorative gradient blob */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -z-10 pointer-events-none" />
+    <div className="glass-panel p-8 rounded-2xl relative overflow-hidden border-2 border-primary/30">
+      {/* Decorative gradient blobs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/15 rounded-full blur-[100px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
       
       <div className="mb-8">
-        <h3 className="text-2xl font-bold text-white mb-2">Get in Touch</h3>
-        <p className="text-gray-400">Ready to automate your future? Let's discuss your custom AI solution.</p>
+        <h3 className="text-3xl font-bold text-white mb-2 gradient-text">Get in Touch</h3>
+        <p className="text-gray-300">Ready to automate your future? Let's discuss your custom AI solution.</p>
       </div>
 
       <Form {...form}>

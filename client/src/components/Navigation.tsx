@@ -67,7 +67,7 @@ export function Navigation() {
             </a>
           ))}
           <Button 
-            className="bg-primary hover:bg-primary/80 text-white rounded-lg px-6 transition-all"
+            className="premium-gradient-button text-white rounded-lg px-6 font-semibold shadow-lg shadow-primary/30"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Book Demo <Rocket className="ml-2 w-4 h-4" />

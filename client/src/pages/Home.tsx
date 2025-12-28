@@ -62,12 +62,16 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20">
+      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div className="absolute inset-0 section-gradient-top" />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div>
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
               Build the Future with <br />
-              <span className="text-primary">Intelligent Agents</span>
+              <span className="gradient-text glow-text">Intelligent Agents</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
@@ -77,15 +81,14 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/80 text-white px-8 h-14 rounded-lg text-lg shadow-lg transition-all"
+                className="premium-gradient-button text-white px-10 h-14 rounded-xl text-lg font-semibold shadow-lg shadow-primary/40"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Start Automating <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button 
-                variant="outline" 
                 size="lg" 
-                className="border-primary/50 text-white hover:bg-primary/5 h-14 px-8 rounded-lg text-lg"
+                className="border-2 border-primary/60 text-white hover:bg-primary/10 h-14 px-10 rounded-xl text-lg font-semibold backdrop-blur-sm"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 View Services
@@ -96,7 +99,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 border-y border-white/10 bg-secondary/20">
+      <section className="py-20 border-y border-white/10 bg-gradient-to-b from-secondary/30 to-secondary/5 section-gradient-bottom">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -105,9 +108,9 @@ export default function Home() {
               { label: "Tasks Automated", value: "1M+" },
               { label: "Client Satisfaction", value: "99%" },
             ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-primary text-sm uppercase tracking-wider font-medium">{stat.label}</div>
+              <div key={i} className="text-center p-6 rounded-xl glass-card">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-2">{stat.value}</div>
+                <div className="text-primary/80 text-sm uppercase tracking-wider font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -115,11 +118,12 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 relative">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-32 relative section-gradient-top">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Expertise</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Our <span className="gradient-text">Expertise</span></h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
               We don't just use AI; we build sophisticated systems that solve real business problems.
             </p>
           </div>
@@ -198,8 +202,12 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 relative">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <section id="contact" className="py-32 relative section-gradient-top">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+        </div>
+        <div className="container mx-auto px-4 max-w-4xl relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Ready to Automate?</h2>
             <p className="text-gray-400 text-lg">

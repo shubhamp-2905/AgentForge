@@ -6,27 +6,27 @@
 
 :root {
   /* Premium Dark Purple Theme - Single Color Palette */
-  --background: 260 30% 8%;      /* #0f0820 - Very dark */
+  --background: 260 30% 7%;      /* #0a0515 - Very dark */
   --foreground: 0 0% 98%;        /* #fafafa - Almost white */
   
-  --primary: 263 60% 58%;        /* #8a5ac7 - Purple */
+  --primary: 263 70% 58%;        /* #9863ff - Vibrant purple */
   --primary-foreground: 0 0% 98%;
 
-  --secondary: 260 20% 15%;      /* #1a141f - Slightly lighter dark */
+  --secondary: 260 20% 14%;      /* #17101f - Slightly lighter dark */
   --secondary-foreground: 0 0% 98%;
 
   --muted: 260 20% 25%;
   --muted-foreground: 0 0% 60%;
 
-  --accent: 263 60% 58%;         /* Same as primary - single color */
+  --accent: 263 70% 58%;         /* Same as primary - single color */
   --accent-foreground: 0 0% 98%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 260 20% 20%;
+  --border: 260 30% 20%;
   --input: 260 20% 15%;
-  --ring: 263 60% 58%;
+  --ring: 263 70% 58%;
 
   --radius: 0.75rem;
   
@@ -49,19 +49,48 @@
 
 @layer utilities {
   .glass-panel {
-    @apply bg-secondary/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-gradient-to-br from-secondary/60 to-secondary/30 backdrop-blur-2xl border border-white/15 shadow-2xl;
   }
   
   .glass-card {
-    @apply bg-secondary/30 backdrop-blur-sm border border-white/10 hover:border-primary/40 transition-all duration-300;
+    @apply bg-gradient-to-br from-secondary/40 to-secondary/20 backdrop-blur-xl border border-white/15 hover:border-primary/60 transition-all duration-300;
   }
 
-  .text-gradient {
-    @apply text-white;
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, rgba(152, 99, 255, 0.1), rgba(152, 99, 255, 0.05)) padding-box,
+                linear-gradient(135deg, rgba(152, 99, 255, 0.4), rgba(152, 99, 255, 0.1)) border-box;
+    border: 1.5px solid transparent;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent;
   }
   
   .glow-text {
-    text-shadow: 0 0 15px rgba(139, 90, 215, 0.3);
+    text-shadow: 0 0 25px rgba(152, 99, 255, 0.6), 0 0 50px rgba(152, 99, 255, 0.3);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px rgba(152, 99, 255, 0.3), inset 0 0 20px rgba(152, 99, 255, 0.1);
+  }
+
+  .premium-gradient-button {
+    @apply bg-gradient-to-r from-primary via-primary to-primary/80 hover:shadow-lg hover:shadow-primary/50 transition-all duration-300;
+  }
+
+  .section-gradient-top {
+    background: linear-gradient(180deg, 
+      rgba(152, 99, 255, 0.05) 0%, 
+      rgba(152, 99, 255, 0.02) 50%, 
+      transparent 100%);
+  }
+
+  .section-gradient-bottom {
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(152, 99, 255, 0.02) 50%,
+      rgba(152, 99, 255, 0.05) 100%);
   }
 }
 
