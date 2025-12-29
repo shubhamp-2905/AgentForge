@@ -1,50 +1,48 @@
-import { createContext, useContext, useEffect, useState } from "react";
+// import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "light" | "dark";
+// type Theme = "light" | "dark";
 
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-}
+// interface ThemeContextType {
+//   theme: Theme;
+//   toggleTheme: () => void;
+// }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+// const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [isMounted, setIsMounted] = useState(false);
+// export function ThemeProvider({ children }: { children: React.ReactNode }) {
+//   const [theme, setTheme] = useState<Theme>(() => {
+//     // Initialize from localStorage or system preference
+//     if (typeof window !== 'undefined') {
+//       const savedTheme = localStorage.getItem("theme") as Theme | null;
+//       if (savedTheme) return savedTheme;
+      
+//       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+//       return prefersDark ? "dark" : "light";
+//     }
+//     return "dark";
+//   });
 
-  useEffect(() => {
-    setIsMounted(true);
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
-    
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle("light", initialTheme === "light");
-  }, []);
+//   useEffect(() => {
+//     document.documentElement.classList.toggle("light", theme === "light");
+//   }, [theme]);
 
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("light", newTheme === "light");
-  };
+//   const toggleTheme = () => {
+//     const newTheme = theme === "dark" ? "light" : "dark";
+//     setTheme(newTheme);
+//     localStorage.setItem("theme", newTheme);
+//   };
 
-  if (!isMounted) {
-    return <>{children}</>;
-  }
+//   return (
+//     <ThemeContext.Provider value={{ theme, toggleTheme }}>
+//       {children}
+//     </ThemeContext.Provider>
+//   );
+// }
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-}
+// export function useTheme() {
+//   const context = useContext(ThemeContext);
+//   if (context === undefined) {
+//     throw new Error("useTheme must be used within a ThemeProvider");
+//   }
+//   return context;
+// }

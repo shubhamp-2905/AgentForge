@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Rocket, Cpu, Sun, Moon } from "lucide-react";
+import { Menu, X, Rocket, Cpu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/ThemeProvider";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +44,7 @@ export function Navigation() {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group cursor-pointer">
           <Cpu className="w-8 h-8 text-primary" />
-          <span className="text-xl font-bold tracking-wider text-foreground dark:text-white">
+          <span className="text-xl font-bold tracking-wider text-white">
             AGENT<span className="text-primary">FORGE</span>
           </span>
         </Link>
@@ -63,20 +61,11 @@ export function Navigation() {
                   handleNavClick(link.href);
                 }
               }}
-              className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-foreground dark:hover:text-white transition-all"
+              className="text-sm font-medium text-gray-300 hover:text-white transition-all"
             >
               {link.name}
             </a>
           ))}
-          
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-secondary transition-all text-foreground dark:text-white"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
           
           <button 
             className="premium-button-primary text-white px-6 py-2 text-sm font-bold"
@@ -89,14 +78,7 @@ export function Navigation() {
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-2">
           <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-secondary transition-all text-foreground dark:text-white"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
-          <button
-            className="text-foreground dark:text-white"
+            className="text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -106,7 +88,7 @@ export function Navigation() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl border-b border-gray-300 dark:border-white/10 p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-white/10 p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -117,7 +99,7 @@ export function Navigation() {
                   handleNavClick(link.href);
                 }
               }}
-              className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-foreground dark:hover:text-white py-2 border-b border-gray-300 dark:border-white/5"
+              className="text-lg font-medium text-gray-300 hover:text-white py-2 border-b border-white/5"
             >
               {link.name}
             </a>

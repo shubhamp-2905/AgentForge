@@ -14,6 +14,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+
 export default function Home() {
   const automations = [
     {
@@ -119,160 +120,283 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 border-y border-white/10 bg-gradient-to-b from-secondary/30 to-secondary/5 section-gradient-bottom">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: "Hours Saved", value: "50k+" },
-              { label: "Agents Deployed", value: "100+" },
-              { label: "Tasks Automated", value: "1M+" },
-              { label: "Client Satisfaction", value: "99%" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center p-6 rounded-xl glass-card">
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-2">{stat.value}</div>
-                <div className="text-primary/80 text-sm uppercase tracking-wider font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
+      
 
       {/* About Us Section */}
-      <section id="about" className="py-32 relative bg-gradient-to-b from-secondary/20 to-secondary/5 dark:from-secondary/30 dark:to-secondary/10">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="mb-4 text-foreground dark:text-white font-display font-black">About <span className="gradient-text">AgentForge</span></h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg font-light">
-              We're pioneers in AI-powered automation, building intelligent systems that transform how businesses operate.
-            </p>
-          </div>
+      <section id="about" className="py-32 relative bg-gradient-to-b from-secondary/30 to-background overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4 font-display">Our Mission</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed font-light">
-                We empower businesses to harness the power of AI by building custom automation agents. No more manual workflows, no more repetitive tasks—just intelligent systems that scale with your business.
-              </p>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed font-light">
-                From lead qualification to customer support, we architect AI solutions that work 24/7 to drive growth and efficiency.
-              </p>
+      <div className="container mx-auto px-4 relative z-10">
+                  <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Bot className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold text-primary">Next-Gen AI Solutions</span>
+          </div>
+          <h2 className="mb-6 text-white font-display font-black text-4xl md:text-5xl">
+            About <span className="gradient-text">AgentForge</span>
+          </h2>
+          <p className="text-gray-300 max-w-3xl mx-auto text-lg font-light leading-relaxed">
+            We're pioneers in AI-powered automation, building intelligent systems that transform how businesses operate and scale.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10">
+              <Bot className="w-4 h-4 text-primary" />
+              <span className="text-xs font-bold text-primary uppercase tracking-wider">Our Mission</span>
             </div>
-            <div className="glass-card p-8 rounded-2xl border border-gray-200 dark:border-white/15">
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground dark:text-white mb-1">Custom AI Agents</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Tailored solutions designed for your specific workflows</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Database className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground dark:text-white mb-1">Enterprise Security</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Your data stays secure with encrypted, private deployments</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <BrainCircuit className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground dark:text-white mb-1">Advanced Intelligence</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Powered by cutting-edge LLMs and proprietary algorithms</p>
-                  </div>
-                </div>
+            <h3 className="text-3xl md:text-4xl font-bold text-white font-display leading-tight">
+              Empowering Businesses with <span className="gradient-text">Intelligent Automation</span>
+            </h3>
+            <p className="text-gray-300 text-lg leading-relaxed font-light">
+              We empower businesses to harness the power of AI by building custom automation agents. No more manual workflows, no more repetitive tasks—just intelligent systems that scale with your business.
+            </p>
+            <p className="text-gray-300 text-lg leading-relaxed font-light">
+              From lead qualification to customer support, we architect AI solutions that work 24/7 to drive growth and efficiency.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+                <CheckCircle2 className="w-5 h-5 text-primary" />
+                <span className="text-sm font-semibold text-white">10x Productivity</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+                <ArrowRight className="w-5 h-5 text-primary" />
+                <span className="text-sm font-semibold text-white">24/7 Operation</span>
               </div>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-bold text-foreground dark:text-white mb-8 font-display text-center">Services We Provide</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { title: "Lead Qualification Agent", desc: "Automatically qualify and score leads with intelligent conversation flows" },
-                { title: "Customer Support AI", desc: "24/7 AI support handling inquiries with human-like empathy and intelligence" },
-                { title: "Reputation Management", desc: "Monitor and respond to reviews across all platforms with AI insights" },
-                { title: "HR Resume Screening", desc: "Instantly analyze resumes and identify top candidates automatically" },
-                { title: "AI Receptionist", desc: "Voice and chat receptionist handling calls, bookings, and scheduling" },
-                { title: "Custom Automations", desc: "Bespoke AI solutions for your unique business workflows and processes" }
-              ].map((service, i) => (
-                <div key={i} className="glass-card p-6 rounded-xl border border-gray-200 dark:border-white/10">
-                  <h4 className="font-bold text-foreground dark:text-white mb-2">{service.title}</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 font-light">{service.desc}</p>
+          <div className="grid grid-cols-1 gap-6">
+            {/* Card 1 - Custom AI Agents */}
+            <div className="group glass-card p-6 rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 bg-gradient-to-br from-white/5 to-white/0">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 border border-primary/20">
+                  <Bot className="w-7 h-7 text-primary" />
                 </div>
-              ))}
+                <div className="flex-1">
+                  <h4 className="font-bold text-white mb-2 text-lg">Custom AI Agents</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Tailored solutions designed for your specific workflows. Each agent is trained on your data and optimized for your business processes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 - Enterprise Security */}
+            <div className="group glass-card p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 bg-gradient-to-br from-white/5 to-white/0">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/30 to-purple-500/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 border border-purple-500/20">
+                  <Database className="w-7 h-7 text-purple-400" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-white mb-2 text-lg">Enterprise Security</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Your data stays secure with encrypted, private deployments. Bank-level security with full compliance guarantees.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 - Advanced Intelligence */}
+            <div className="group glass-card p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 bg-gradient-to-br from-white/5 to-white/0">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/30 to-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 border border-blue-500/20">
+                  <BrainCircuit className="w-7 h-7 text-blue-400" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-white mb-2 text-lg">Advanced Intelligence</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Powered by cutting-edge LLMs and proprietary algorithms. Continuous learning ensures peak performance.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4 - Seamless Integration */}
+            <div className="group glass-card p-6 rounded-2xl border border-white/10 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 bg-gradient-to-br from-white/5 to-white/0">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/30 to-emerald-500/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 border border-emerald-500/20">
+                  <MessageSquareText className="w-7 h-7 text-emerald-400" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-white mb-2 text-lg">Seamless Integration</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Connect with your existing tools and platforms. Deploy in hours, not months, with minimal disruption.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Automations Section */}
-      <section id="automations" className="py-32 relative section-gradient-top">
-        <div className="absolute inset-0 light-grid-pattern pointer-events-none" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="mb-4 text-white font-display font-black">Complex Workflows <span className="gradient-text">Automated</span></h2>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg font-light">
-              We automate sophisticated business processes. Choose from proven automation templates or we'll build a custom solution tailored to your needs.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {automations.map((automation, index) => (
-              <ServiceCard key={index} {...automation} delay={index * 0.1} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Automations Section */}
+<section id="automations" className="py-32 relative section-gradient-top">
+  <div className="absolute inset-0 light-grid-pattern pointer-events-none" />
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="mb-4 text-white font-display font-black">Complex Workflows <span className="gradient-text">Automated</span></h2>
+      <p className="text-gray-300 max-w-2xl mx-auto text-lg font-light">
+        We automate sophisticated business processes. Choose from proven automation templates or we'll build a custom solution tailored to your needs.
+      </p>
+    </div>
+    
+    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+      {automations.map((automation, index) => (
+        <ServiceCard key={index} {...automation} delay={index * 0.1} />
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Custom Solutions Section */}
-      <section id="solutions" className="py-32">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="mb-6 text-white font-display font-black">Need Something <span className="gradient-text">Unique?</span></h2>
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed font-light">
-                Off-the-shelf solutions rarely fit complex workflows. We specialize in custom architecture. Whether you need a proprietary LLM trained on your data or an autonomous agent swarm, we build it.
-              </p>
-              
-              <ul className="space-y-4 mb-10">
-                {[
-                  "Custom LLM Fine-tuning & RAG",
-                  "Multi-Agent Orchestration",
-                  "Voice AI & Telephony Integration",
-                  "Proprietary Data Security Protocols"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <Button 
-                variant="outline"
-                className="border-primary/50 text-white hover:bg-primary/10 h-12 px-8 rounded-lg"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Discuss Your Vision
-              </Button>
-            </div>
-
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-secondary/30 border border-white/10 p-8 flex items-center justify-center relative overflow-hidden">
-                <BrainCircuit className="w-64 h-64 text-white/10 transition-colors duration-300" />
+     <section id="solutions" className="py-32 relative overflow-hidden">
+  {/* Background Effects */}
+  <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background pointer-events-none" />
+  <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+  
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <Bot className="w-4 h-4 text-primary" />
+          <span className="text-sm font-semibold text-primary">Custom Solutions</span>
+        </div>
+        
+        <h2 className="mb-6 text-white font-display font-black text-4xl md:text-5xl leading-tight">
+          Need Something <span className="gradient-text">Unique?</span>
+        </h2>
+        <p className="text-gray-300 text-lg mb-8 leading-relaxed font-light">
+          Off-the-shelf solutions rarely fit complex workflows. We specialize in custom architecture. Whether you need a proprietary LLM trained on your data or an autonomous agent swarm, we build it.
+        </p>
+        
+        <div className="space-y-4 mb-10">
+          {[
+            "Custom LLM Fine-tuning & RAG",
+            "Multi-Agent Orchestration",
+            "Voice AI & Telephony Integration",
+            "Proprietary Data Security Protocols"
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-300 group">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors">
+                <CheckCircle2 className="w-5 h-5 text-primary" />
               </div>
+              <span className="text-white font-medium">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <Button 
+          variant="outline"
+          className="border-primary/50 text-white hover:bg-primary/10 hover:border-primary h-12 px-8 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+        >
+          Discuss Your Vision
+        </Button>
+      </div>
+
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-2xl blur-2xl" />
+        <div className="relative rounded-2xl border border-white/10 overflow-hidden backdrop-blur-sm">
+          <img 
+            src="/image.png" 
+            alt="AI Automation Illustration" 
+            className="w-full h-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      {/* Stats Section */}
+
+   <section className="py-24 relative overflow-hidden border-y border-white/10">
+  {/* Background Effects */}
+  <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-primary/5 to-secondary/30" />
+  <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[150px] animate-pulse" />
+  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
+  
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
+        Why Choose <span className="gradient-text">AgentForge</span>
+      </h2>
+      <p className="text-gray-300 max-w-2xl mx-auto">
+        Built on cutting-edge AI technology to deliver unmatched automation capabilities
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { 
+          icon: "🤖",
+          value: "24/7", 
+          label: "Always Active",
+          description: "Agents work around the clock"
+        },
+        { 
+          icon: "⚡",
+          value: "10x", 
+          label: "Faster Execution",
+          description: "Lightning-speed automation"
+        },
+        { 
+          icon: "🎯",
+          value: "100%", 
+          label: "Custom-Built",
+          description: "Tailored to your needs"
+        },
+        { 
+          icon: "🔒",
+          value: "Enterprise", 
+          label: "Grade Security",
+          description: "Bank-level protection"
+        },
+      ].map((stat, i) => (
+        <div 
+          key={i} 
+          className="group relative"
+        >
+          {/* Glow effect on hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+          
+          <div className="relative h-full p-8 rounded-2xl glass-card border border-white/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center">
+            {/* Icon */}
+            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {stat.icon}
+            </div>
+            
+            {/* Value */}
+            <div className="text-4xl md:text-5xl font-black mb-2 bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+              {stat.value}
+            </div>
+            
+            {/* Label */}
+            <div className="text-white font-bold text-lg mb-2">
+              {stat.label}
+            </div>
+            
+            {/* Description */}
+            <div className="text-gray-400 text-sm">
+              {stat.description}
             </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* FAQ Section */}
       <section id="faq" className="py-32 bg-black/20">

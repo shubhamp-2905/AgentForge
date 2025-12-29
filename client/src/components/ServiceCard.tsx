@@ -1,4 +1,4 @@
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, ArrowRight } from "lucide-react";
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -20,9 +20,16 @@ export function ServiceCard({ icon: Icon, title, description }: ServiceCardProps
         <h3 className="text-lg font-bold mb-3 text-white font-display group-hover:text-primary/90 transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-gray-300 text-sm leading-relaxed flex-1 group-hover:text-gray-200 transition-colors duration-300 font-light">
+        <p className="text-gray-300 text-sm leading-relaxed flex-1 group-hover:text-gray-200 transition-colors duration-300 font-light mb-6">
           {description}
         </p>
+
+        <button className="w-full px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group/btn">
+          <span className="flex items-center justify-center gap-2">
+            View Details
+            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+          </span>
+        </button>
       </div>
     </div>
   );
