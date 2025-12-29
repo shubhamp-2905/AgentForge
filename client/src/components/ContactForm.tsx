@@ -34,8 +34,8 @@ export function ContactForm() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
       
       <div className="mb-8">
-        <h3 className="text-3xl font-bold text-white mb-2 gradient-text">Get in Touch</h3>
-        <p className="text-gray-300">Ready to automate your future? Let's discuss your custom AI solution.</p>
+        <h3 className="text-3xl font-bold text-white mb-2 font-display">Get in <span className="gradient-text">Touch</span></h3>
+        <p className="text-gray-300 font-light">Ready to automate your future? Let's discuss your custom AI solution.</p>
       </div>
 
       <Form {...form}>

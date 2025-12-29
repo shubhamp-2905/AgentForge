@@ -15,26 +15,31 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function Home() {
-  const services = [
+  const automations = [
     {
       icon: Bot,
-      title: "Support Agents",
-      description: "24/7 intelligent customer support agents that learn from your knowledge base and handle complex queries with human-like empathy."
-    },
-    {
-      icon: Database,
-      title: "Data Analysis",
-      description: "Automated pipelines that process, clean, and analyze vast datasets to extract actionable business intelligence in real-time."
+      title: "Lead Qualification Agent",
+      description: "Automatically qualify and score incoming leads with intelligent conversation flows."
     },
     {
       icon: MessageSquareText,
-      title: "Content Generation",
-      description: "Scale your marketing with AI that generates SEO-optimized articles, social posts, and email campaigns in your brand voice."
+      title: "AI Review & Reputation Management",
+      description: "Monitor, analyze, and respond to reviews across platforms with AI-powered insights."
+    },
+    {
+      icon: Database,
+      title: "Customer Support Agent",
+      description: "24/7 AI-powered support handling complex customer inquiries with human-like empathy."
     },
     {
       icon: BrainCircuit,
-      title: "Workflow Automation",
-      description: "Custom n8n and Zapier integrations powered by LLMs to connect your disparate tools and automate repetitive manual tasks."
+      title: "AI HR Resume Screening Agent",
+      description: "Instantly analyze resumes and identify top candidates matching your job requirements."
+    },
+    {
+      icon: Bot,
+      title: "AI Receptionist",
+      description: "Intelligent voice and chat receptionist handling calls, bookings, and inquiries seamlessly."
     }
   ];
 
@@ -94,9 +99,9 @@ export default function Home() {
               </button>
               <button 
                 className="premium-button-outline text-white px-10 py-4 text-lg font-bold min-w-64 sm:min-w-fit"
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('automations')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                View Services
+                Explore Automations
               </button>
             </div>
           </div>
@@ -122,20 +127,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-32 relative section-gradient-top">
+      {/* Automations Section */}
+      <section id="automations" className="py-32 relative section-gradient-top">
+        <div className="absolute inset-0 light-grid-pattern pointer-events-none" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-white font-display font-black">Our <span className="gradient-text">Expertise</span></h2>
+            <h2 className="mb-4 text-white font-display font-black">Complex Workflows <span className="gradient-text">Automated</span></h2>
             <p className="text-gray-300 max-w-2xl mx-auto text-lg font-light">
-              We don't just use AI; we build sophisticated systems that solve real business problems.
+              We automate sophisticated business processes. Choose from proven automation templates or we'll build a custom solution tailored to your needs.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <ServiceCard key={index} {...service} delay={index * 0.1} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {automations.map((automation, index) => (
+              <ServiceCard key={index} {...automation} delay={index * 0.1} />
             ))}
           </div>
         </div>

@@ -54,15 +54,19 @@
   h2 {
     @apply text-4xl md:text-5xl;
   }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
 }
 
 @layer utilities {
   .glass-panel {
-    @apply bg-gradient-to-br from-secondary/60 to-secondary/30 backdrop-blur-2xl border border-white/15 shadow-2xl;
+    @apply bg-gradient-to-br from-secondary/70 to-secondary/40 backdrop-blur-2xl border border-white/20 shadow-2xl;
   }
   
   .glass-card {
-    @apply bg-gradient-to-br from-secondary/40 to-secondary/20 backdrop-blur-xl border border-white/15 hover:border-primary/60 transition-all duration-300;
+    @apply bg-gradient-to-br from-secondary/50 to-secondary/25 backdrop-blur-2xl border border-white/15 transition-all duration-300;
   }
 
   .gradient-border {
@@ -117,6 +121,13 @@
   .premium-button-outline:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .light-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 
   .glow-border {
