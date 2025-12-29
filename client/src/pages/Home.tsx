@@ -63,36 +63,41 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div className="absolute inset-0 section-gradient-top" />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        {/* Dynamic gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10" />
+        <div className="absolute inset-0 opacity-40" style={{
+          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(152, 99, 255, 0.15) 0%, transparent 50%), 
+                            radial-gradient(circle at 80% 80%, rgba(152, 99, 255, 0.1) 0%, transparent 50%)`
+        }} />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[130px] pointer-events-none" />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
+            <h1 className="mb-8 leading-tight text-white font-display font-black">
               Build the Future with <br />
-              <span className="gradient-text glow-text">Intelligent Agents</span>
+              <span className="gradient-text">Intelligent Agents</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
               We engineer custom AI automation systems that scale your business, reduce costs, and work while you sleep.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button 
-                size="lg" 
-                className="premium-gradient-button text-white px-10 h-14 rounded-xl text-lg font-semibold shadow-lg shadow-primary/40"
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <button 
+                className="premium-button-primary text-white px-10 py-4 text-lg font-bold min-w-64 sm:min-w-fit"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Start Automating <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                className="border-2 border-primary/60 text-white hover:bg-primary/10 h-14 px-10 rounded-xl text-lg font-semibold backdrop-blur-sm"
+                <span className="flex items-center justify-center gap-2">
+                  Start Automating <ArrowRight className="w-5 h-5" />
+                </span>
+              </button>
+              <button 
+                className="premium-button-outline text-white px-10 py-4 text-lg font-bold min-w-64 sm:min-w-fit"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 View Services
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -122,8 +127,8 @@ export default function Home() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Our <span className="gradient-text">Expertise</span></h2>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            <h2 className="mb-4 text-white font-display font-black">Our <span className="gradient-text">Expertise</span></h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg font-light">
               We don't just use AI; we build sophisticated systems that solve real business problems.
             </p>
           </div>
@@ -141,8 +146,8 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">Need Something <span className="text-primary">Unique?</span></h2>
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+              <h2 className="mb-6 text-white font-display font-black">Need Something <span className="gradient-text">Unique?</span></h2>
+              <p className="text-gray-300 text-lg mb-8 leading-relaxed font-light">
                 Off-the-shelf solutions rarely fit complex workflows. We specialize in custom architecture. Whether you need a proprietary LLM trained on your data or an autonomous agent swarm, we build it.
               </p>
               
@@ -182,8 +187,8 @@ export default function Home() {
       <section id="faq" className="py-32 bg-black/20">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-400">Everything you need to know about our process.</p>
+            <h2 className="mb-4 font-display font-black">Frequently Asked Questions</h2>
+            <p className="text-gray-400 font-light">Everything you need to know about our process.</p>
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
@@ -209,8 +214,8 @@ export default function Home() {
         </div>
         <div className="container mx-auto px-4 max-w-4xl relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Ready to Automate?</h2>
-            <p className="text-gray-400 text-lg">
+            <h2 className="mb-4 font-display font-black">Ready to Automate?</h2>
+            <p className="text-gray-400 text-lg font-light">
               Fill out the form below and our AI consultants will reach out within 24 hours.
             </p>
           </div>

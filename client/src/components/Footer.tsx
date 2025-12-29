@@ -97,14 +97,13 @@ export function Footer() {
                             {...field} 
                             className="bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-primary/50 text-sm h-10"
                           />
-                          <Button 
+                          <button 
                             type="submit" 
-                            size="icon" 
                             disabled={isPending}
-                            className="bg-primary hover:bg-primary/90 h-10 w-10 shrink-0"
+                            className="premium-button-primary h-10 w-10 p-0 flex items-center justify-center"
                           >
                             {isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <ArrowRight className="w-4 h-4" />}
-                          </Button>
+                          </button>
                         </div>
                       </FormControl>
                       <FormMessage />

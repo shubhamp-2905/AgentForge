@@ -116,17 +116,17 @@ export function ContactForm() {
             )}
           />
 
-          <Button 
+          <button 
             type="submit" 
             disabled={isPending}
-            className="w-full h-12 bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-lg font-medium shadow-lg shadow-primary/25"
+            className="premium-button-primary w-full mt-4 font-bold text-lg"
           >
             {isPending ? (
               <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</>
             ) : (
               <><Send className="mr-2 h-5 w-5" /> Send Message</>
             )}
-          </Button>
+          </button>
         </form>
       </Form>
     </div>

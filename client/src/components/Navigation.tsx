@@ -66,12 +66,12 @@ export function Navigation() {
               {link.name}
             </a>
           ))}
-          <Button 
-            className="premium-gradient-button text-white rounded-lg px-6 font-semibold shadow-lg shadow-primary/30"
+          <button 
+            className="premium-button-primary text-white px-6 py-2 text-sm font-bold"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Book Demo <Rocket className="ml-2 w-4 h-4" />
-          </Button>
+            <span className="flex items-center gap-2">Book Demo <Rocket className="w-4 h-4" /></span>
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -101,15 +101,15 @@ export function Navigation() {
               {link.name}
             </a>
           ))}
-          <Button 
-            className="w-full bg-primary hover:bg-primary/90 mt-4"
+          <button 
+            className="premium-button-primary w-full mt-4 font-bold"
             onClick={() => {
               setIsMobileMenuOpen(false);
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             Book Demo
-          </Button>
+          </button>
         </div>
       )}
     </nav>
