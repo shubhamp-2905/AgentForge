@@ -67,17 +67,28 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* Dynamic gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10" />
-        <div className="absolute inset-0 opacity-40" style={{
-          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(152, 99, 255, 0.15) 0%, transparent 50%), 
-                            radial-gradient(circle at 80% 80%, rgba(152, 99, 255, 0.1) 0%, transparent 50%)`
-        }} />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[130px] pointer-events-none" />
+      <section className="hero-background relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background">
+        {/* Multi-layer background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/25 via-background to-primary/15" />
         
-        <div className="container mx-auto px-4 relative z-10 text-center">
+        {/* Dark grid overlay */}
+        <div className="absolute inset-0 dark-grid-pattern opacity-60" />
+        
+        {/* Radial gradients */}
+        <div className="absolute inset-0 opacity-50" style={{
+          backgroundImage: `radial-gradient(circle at 15% 40%, rgba(152, 99, 255, 0.2) 0%, transparent 45%), 
+                            radial-gradient(circle at 85% 75%, rgba(152, 99, 255, 0.15) 0%, transparent 45%)`
+        }} />
+        
+        {/* Animated blur orbs */}
+        <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/20 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        
+        {/* Accent line elements */}
+        <div className="absolute top-1/3 left-0 w-96 h-1 bg-gradient-to-r from-primary/20 to-transparent opacity-40" />
+        <div className="absolute bottom-1/3 right-0 w-96 h-1 bg-gradient-to-l from-primary/20 to-transparent opacity-40" />
+        
+        <div className="container mx-auto px-4 hero-content text-center">
           <div>
             <h1 className="mb-8 leading-tight text-white font-display font-black">
               Build the Future with <br />
