@@ -34,6 +34,31 @@
   --font-display: 'Poppins', sans-serif;
 }
 
+.light {
+  /* Light mode colors */
+  --background: 0 0% 98%;        /* #fafafa - Almost white */
+  --foreground: 260 30% 7%;      /* #0a0515 - Very dark text */
+  
+  --primary: 263 70% 58%;        /* #9863ff - Same purple */
+  --primary-foreground: 0 0% 98%;
+
+  --secondary: 260 10% 92%;      /* Light gray secondary */
+  --secondary-foreground: 260 30% 7%;
+
+  --muted: 260 10% 80%;
+  --muted-foreground: 260 20% 40%;
+
+  --accent: 263 70% 58%;         /* Same primary */
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 260 20% 85%;
+  --input: 260 10% 94%;
+  --ring: 263 70% 58%;
+}
+
 @layer base {
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white;

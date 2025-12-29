@@ -138,6 +138,80 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section id="about" className="py-32 relative bg-gradient-to-b from-secondary/20 to-secondary/5 dark:from-secondary/30 dark:to-secondary/10">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="mb-4 text-foreground dark:text-white font-display font-black">About <span className="gradient-text">AgentForge</span></h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg font-light">
+              We're pioneers in AI-powered automation, building intelligent systems that transform how businesses operate.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4 font-display">Our Mission</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed font-light">
+                We empower businesses to harness the power of AI by building custom automation agents. No more manual workflows, no more repetitive tasks—just intelligent systems that scale with your business.
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+                From lead qualification to customer support, we architect AI solutions that work 24/7 to drive growth and efficiency.
+              </p>
+            </div>
+            <div className="glass-card p-8 rounded-2xl border border-gray-200 dark:border-white/15">
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Bot className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground dark:text-white mb-1">Custom AI Agents</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Tailored solutions designed for your specific workflows</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Database className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground dark:text-white mb-1">Enterprise Security</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Your data stays secure with encrypted, private deployments</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <BrainCircuit className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground dark:text-white mb-1">Advanced Intelligence</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Powered by cutting-edge LLMs and proprietary algorithms</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-bold text-foreground dark:text-white mb-8 font-display text-center">Services We Provide</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { title: "Lead Qualification Agent", desc: "Automatically qualify and score leads with intelligent conversation flows" },
+                { title: "Customer Support AI", desc: "24/7 AI support handling inquiries with human-like empathy and intelligence" },
+                { title: "Reputation Management", desc: "Monitor and respond to reviews across all platforms with AI insights" },
+                { title: "HR Resume Screening", desc: "Instantly analyze resumes and identify top candidates automatically" },
+                { title: "AI Receptionist", desc: "Voice and chat receptionist handling calls, bookings, and scheduling" },
+                { title: "Custom Automations", desc: "Bespoke AI solutions for your unique business workflows and processes" }
+              ].map((service, i) => (
+                <div key={i} className="glass-card p-6 rounded-xl border border-gray-200 dark:border-white/10">
+                  <h4 className="font-bold text-foreground dark:text-white mb-2">{service.title}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 font-light">{service.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Automations Section */}
       <section id="automations" className="py-32 relative section-gradient-top">
         <div className="absolute inset-0 light-grid-pattern pointer-events-none" />
