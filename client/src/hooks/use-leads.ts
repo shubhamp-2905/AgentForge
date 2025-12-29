@@ -1,37 +1,80 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type InsertLead, type InsertSubscriber } from "@shared/routes";
+import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
+
+/* ------------------------------------------------------------------
+   FRONTEND CONFIG (NO @shared)
+-------------------------------------------------------------------*/
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+const API_ROUTES = {
+  createLead: {
+    path: `${API_BASE_URL}/api/leads`,
+    method: "POST",
+  },
+  createSubscriber: {
+    path: `${API_BASE_URL}/api/subscribers`,
+    method: "POST",
+  },
+};
+
+/* ------------------------------------------------------------------
+   FRONTEND TYPES (SAFE)
+-------------------------------------------------------------------*/
+
+export type InsertLead = {
+  name: string;
+  email: string;
+  company?: string;
+  message: string;
+};
+
+export type InsertSubscriber = {
+  email: string;
+};
+
+/* ------------------------------------------------------------------
+   HOOKS
+-------------------------------------------------------------------*/
 
 export function useCreateLead() {
   const { toast } = useToast();
-  
+
   return useMutation({
     mutationFn: async (data: InsertLead) => {
-      // Zod validation happens on both ends, but we double-check here
-      const validated = api.leads.create.input.parse(data);
-      
-      const res = await fetch(api.leads.create.path, {
-        method: api.leads.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
+      const res = await fetch(API_ROUTES.createLead.path, {
+        method: API_ROUTES.createLead.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
 
       if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.leads.create.responses[400].parse(await res.json());
-          throw new Error(error.message || "Validation failed");
+        let message = "Failed to submit inquiry";
+
+        try {
+          const err = await res.json();
+          message = err?.message || message;
+        } catch {
+          // ignore JSON parse errors
         }
-        throw new Error("Failed to submit inquiry");
+
+        throw new Error(message);
       }
 
-      return api.leads.create.responses[201].parse(await res.json());
+      return res.json();
     },
+
     onSuccess: () => {
       toast({
         title: "Message Sent",
-        description: "We've received your inquiry and will be in touch shortly.",
+        description:
+          "We've received your inquiry and will be in touch shortly.",
       });
     },
+
     onError: (error) => {
       toast({
         variant: "destructive",
@@ -47,30 +90,37 @@ export function useCreateSubscriber() {
 
   return useMutation({
     mutationFn: async (data: InsertSubscriber) => {
-      const validated = api.subscribers.create.input.parse(data);
-      
-      const res = await fetch(api.subscribers.create.path, {
-        method: api.subscribers.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
+      const res = await fetch(API_ROUTES.createSubscriber.path, {
+        method: API_ROUTES.createSubscriber.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
 
       if (!res.ok) {
-         if (res.status === 400) {
-          const error = api.subscribers.create.responses[400].parse(await res.json());
-          throw new Error(error.message || "Validation failed");
+        let message = "Failed to subscribe";
+
+        try {
+          const err = await res.json();
+          message = err?.message || message;
+        } catch {
+          // ignore JSON parse errors
         }
-        throw new Error("Failed to subscribe");
+
+        throw new Error(message);
       }
 
-      return api.subscribers.create.responses[201].parse(await res.json());
+      return res.json();
     },
+
     onSuccess: () => {
       toast({
         title: "Subscribed!",
         description: "You've been added to our newsletter.",
       });
     },
+
     onError: (error) => {
       toast({
         variant: "destructive",

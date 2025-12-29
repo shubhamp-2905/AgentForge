@@ -1,16 +1,42 @@
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertLeadSchema, type InsertLead } from "@shared/schema";
+
 import { useCreateLead } from "@/hooks/use-leads";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
 import { Loader2, Send } from "lucide-react";
+
+/* ------------------------------------------------------------------
+   FRONTEND-ONLY SCHEMA (NO @shared, NO BACKEND DEPENDENCY)
+-------------------------------------------------------------------*/
+
+const insertLeadSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Please enter a valid email"),
+  company: z.string().optional(),
+  message: z.string().min(1, "Message is required"),
+});
+
+type InsertLead = z.infer<typeof insertLeadSchema>;
+
+/* ------------------------------------------------------------------
+   COMPONENT
+-------------------------------------------------------------------*/
 
 export function ContactForm() {
   const { mutate, isPending } = useCreateLead();
-  
+
   const form = useForm<InsertLead>({
     resolver: zodResolver(insertLeadSchema),
     defaultValues: {
@@ -32,10 +58,14 @@ export function ContactForm() {
       {/* Decorative gradient blobs */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/15 rounded-full blur-[100px] -z-10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
-      
+
       <div className="mb-8">
-        <h3 className="text-3xl font-bold text-white mb-2 font-display">Get in <span className="gradient-text">Touch</span></h3>
-        <p className="text-gray-300 font-light">Ready to automate your future? Let's discuss your custom AI solution.</p>
+        <h3 className="text-3xl font-bold text-white mb-2 font-display">
+          Get in <span className="gradient-text">Touch</span>
+        </h3>
+        <p className="text-gray-300 font-light">
+          Ready to automate your future? Let&apos;s discuss your custom AI solution.
+        </p>
       </div>
 
       <Form {...form}>
@@ -48,9 +78,9 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel className="text-gray-300">Name</FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="John Doe" 
-                      {...field} 
+                    <Input
+                      placeholder="John Doe"
+                      {...field}
                       className="bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-primary/50 focus:ring-primary/20"
                     />
                   </FormControl>
@@ -58,7 +88,7 @@ export function ContactForm() {
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="email"
@@ -66,10 +96,10 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel className="text-gray-300">Email</FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="john@company.com" 
+                    <Input
                       type="email"
-                      {...field} 
+                      placeholder="john@company.com"
+                      {...field}
                       className="bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-primary/50 focus:ring-primary/20"
                     />
                   </FormControl>
@@ -84,12 +114,14 @@ export function ContactForm() {
             name="company"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-300">Company (Optional)</FormLabel>
+                <FormLabel className="text-gray-300">
+                  Company (Optional)
+                </FormLabel>
                 <FormControl>
-                  <Input 
-                    placeholder="Acme Inc." 
-                    {...field} 
-                    value={field.value || ""} 
+                  <Input
+                    placeholder="Acme Inc."
+                    {...field}
+                    value={field.value || ""}
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-primary/50 focus:ring-primary/20"
                   />
                 </FormControl>
@@ -105,9 +137,9 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel className="text-gray-300">Message</FormLabel>
                 <FormControl>
-                  <Textarea 
-                    placeholder="Tell us about your automation needs..." 
-                    {...field} 
+                  <Textarea
+                    placeholder="Tell us about your automation needs..."
+                    {...field}
                     className="min-h-[120px] bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-primary/50 focus:ring-primary/20 resize-none"
                   />
                 </FormControl>
@@ -116,15 +148,21 @@ export function ContactForm() {
             )}
           />
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={isPending}
             className="premium-button-primary w-full mt-4 font-bold text-lg"
           >
             {isPending ? (
-              <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</>
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                Sending...
+              </>
             ) : (
-              <><Send className="mr-2 h-5 w-5" /> Send Message</>
+              <>
+                <Send className="mr-2 h-5 w-5" />
+                Send Message
+              </>
             )}
           </button>
         </form>
