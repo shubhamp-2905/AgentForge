@@ -17,32 +17,37 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 export default function Home() {
   const automations = [
-    {
-      icon: Bot,
-      title: "Lead Qualification Agent",
-      description: "Automatically qualify and score incoming leads with intelligent conversation flows."
-    },
-    {
-      icon: MessageSquareText,
-      title: "AI Review & Reputation Management",
-      description: "Monitor, analyze, and respond to reviews across platforms with AI-powered insights."
-    },
-    {
-      icon: Database,
-      title: "Customer Support Agent",
-      description: "24/7 AI-powered support handling complex customer inquiries with human-like empathy."
-    },
-    {
-      icon: BrainCircuit,
-      title: "AI HR Resume Screening Agent",
-      description: "Instantly analyze resumes and identify top candidates matching your job requirements."
-    },
-    {
-      icon: Bot,
-      title: "AI Receptionist",
-      description: "Intelligent voice and chat receptionist handling calls, bookings, and inquiries seamlessly."
-    }
-  ];
+  {
+    icon: Bot,
+    title: "Lead Qualification Agent",
+    description: "Automatically qualify and score incoming leads with intelligent conversation flows.",
+    link: "https://www.notion.so/Lead-Qualification-Agent-2dafe2072a3d80089976cf8a2271dd12?source=copy_link"
+  },
+  {
+    icon: MessageSquareText,
+    title: "AI Review & Reputation Management",
+    description: "Monitor, analyze, and respond to reviews across platforms with AI-powered insights.",
+    link: "https://www.notion.so/AI-Review-Reputation-Management-Agent-2dafe2072a3d80b7a9aed92dd0f4998d?source=copy_link"
+  },
+  {
+    icon: Database,
+    title: "Customer Support Agent",
+    description: "24/7 AI-powered support handling complex customer inquiries with human-like empathy.",
+    link: "https://www.notion.so/Customer-Support-Agent-2dafe2072a3d807080d2cf063cfea716?source=copy_link"
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI HR Resume Screening Agent",
+    description: "Instantly analyze resumes and identify top candidates matching your job requirements.",
+    link: "https://www.notion.so/AI-HR-Resume-Screening-Agent-2dafe2072a3d8021aa6cffb0a0fc46b2?source=copy_link"
+  },
+  {
+    icon: Bot,
+    title: "AI Receptionist",
+    description: "Intelligent voice and chat receptionist handling calls, bookings, and inquiries seamlessly.",
+    link: "https://www.notion.so/AI-Receptionist-Agent-2dafe2072a3d80998179c0c5cfe0fe2d?source=copy_link"
+  }
+];
 
   const faqs = [
     {

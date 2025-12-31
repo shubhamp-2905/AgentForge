@@ -4,10 +4,11 @@ interface ServiceCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
+  link: string; // Added link prop
   delay?: number;
 }
 
-export function ServiceCard({ icon: Icon, title, description }: ServiceCardProps) {
+export function ServiceCard({ icon: Icon, title, description, link }: ServiceCardProps) {
   return (
     <div className="group relative h-full">
       <div className="relative h-full glass-card p-8 rounded-2xl flex flex-col overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300">
@@ -24,12 +25,15 @@ export function ServiceCard({ icon: Icon, title, description }: ServiceCardProps
           {description}
         </p>
 
-        <button className="w-full px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group/btn">
+        <a 
+          href={link}
+          className="w-full px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group/btn block text-center"
+        >
           <span className="flex items-center justify-center gap-2">
             View Details
             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </span>
-        </button>
+        </a>
       </div>
     </div>
   );
