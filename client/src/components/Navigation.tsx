@@ -34,23 +34,28 @@ export function Navigation() {
 
   return (
     <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
+       className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-white/10 py-4 shadow-lg"
-          : "bg-transparent border-transparent py-6"
+          ? "bg-[#0a0a1a]/90 backdrop-blur-xl py-3 shadow-2xl shadow-black/40"
+          : "bg-transparent py-5"
       )}
+
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-          <Cpu className="w-8 h-8 text-primary" />
-          <span className="text-xl font-bold tracking-wider text-white">
+      <div className="container mx-auto px-6 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 group cursor-pointer">
+          <div className="relative">
+            <Cpu className="w-8 h-8 text-primary transition-transform duration-300 group-hover:rotate-180" />
+            <div className="absolute inset-0 bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+          <span className="text-xl font-bold tracking-wide text-white">
             AGENT<span className="text-primary">FORGE</span>
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -61,58 +66,66 @@ export function Navigation() {
                   handleNavClick(link.href);
                 }
               }}
-              className="text-sm font-medium text-gray-300 hover:text-white transition-all"
+              className="relative text-sm font-semibold text-gray-300 hover:text-white transition-colors duration-300 group"
             >
               {link.name}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
             </a>
           ))}
           
           <button 
-            className="premium-button-primary text-white px-6 py-2 text-sm font-bold"
+            className="relative px-6 py-2.5 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group overflow-hidden"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <span className="flex items-center gap-2">Book Demo <Rocket className="w-4 h-4" /></span>
+            <span className="relative z-10 flex items-center gap-2">
+              Book Demo 
+              <Rocket className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
         </div>
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-2">
           <button
-            className="text-white"
+            className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-white/10 p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => {
-                if (link.href.startsWith("/#")) {
-                  e.preventDefault();
-                  handleNavClick(link.href);
-                }
+        <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a1a]/98 backdrop-blur-2xl border-b border-white/10 shadow-2xl">
+          <div className="container mx-auto px-6 py-6 flex flex-col gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => {
+                  if (link.href.startsWith("/#")) {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }
+                }}
+                className="text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all duration-300"
+              >
+                {link.name}
+              </a>
+            ))}
+            <button 
+              className="w-full mt-4 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="text-lg font-medium text-gray-300 hover:text-white py-2 border-b border-white/5"
             >
-              {link.name}
-            </a>
-          ))}
-          <button 
-            className="premium-button-primary w-full mt-4 font-bold"
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Book Demo
-          </button>
+              Book Demo
+            </button>
+          </div>
         </div>
       )}
     </nav>

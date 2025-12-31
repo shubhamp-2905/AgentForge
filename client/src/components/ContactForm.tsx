@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import emailjs from '@emailjs/browser';
+import { useState } from "react";
 
-import { useCreateLead } from "@/hooks/use-leads";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -15,11 +15,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { Loader2, Send } from "lucide-react";
+import { Loader2, Send, CheckCircle2 } from "lucide-react";
 
-/* ------------------------------------------------------------------
-   FRONTEND-ONLY SCHEMA (NO @shared, NO BACKEND DEPENDENCY)
--------------------------------------------------------------------*/
 
 const insertLeadSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -35,7 +32,8 @@ type InsertLead = z.infer<typeof insertLeadSchema>;
 -------------------------------------------------------------------*/
 
 export function ContactForm() {
-  const { mutate, isPending } = useCreateLead();
+  const [isPending, setIsPending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<InsertLead>({
     resolver: zodResolver(insertLeadSchema),
@@ -47,11 +45,39 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(data: InsertLead) {
-    mutate(data, {
-      onSuccess: () => form.reset(),
-    });
+  async function onSubmit(data: InsertLead) {
+  setIsPending(true);
+  setIsSuccess(false);
+
+  try {
+    // Get from environment variables
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      from_name: data.name,
+      from_email: data.email,
+      company: data.company || 'Not provided',
+      message: data.message,
+      to_name: 'AgentForge Team',
+    };
+
+    await emailjs.send(serviceId, templateId, templateParams, publicKey);
+    
+    setIsSuccess(true);
+    form.reset();
+    
+    setTimeout(() => {
+      setIsSuccess(false);
+    }, 5000);
+  } catch (error: any) {
+    console.error('Failed to send email:', error);
+    alert(`Failed to send message: ${error.text || 'Please try again'}`);
+  } finally {
+    setIsPending(false);
   }
+}
 
   return (
     <div className="glass-panel p-8 rounded-2xl relative overflow-hidden border-2 border-primary/30">
@@ -67,6 +93,14 @@ export function ContactForm() {
           Ready to automate your future? Let&apos;s discuss your custom AI solution.
         </p>
       </div>
+
+      {/* Success Message */}
+      {isSuccess && (
+        <div className="mb-6 p-4 bg-green-500/10 border border-green-500/50 rounded-lg flex items-center gap-3 animate-fade-in">
+          <CheckCircle2 className="w-5 h-5 text-green-400" />
+          <p className="text-green-400 font-medium">Message sent successfully! We'll get back to you soon.</p>
+        </div>
+      )}
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -151,7 +185,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="premium-button-primary w-full mt-4 font-bold text-lg"
+            className="premium-button-primary w-full mt-4 font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? (
               <>
