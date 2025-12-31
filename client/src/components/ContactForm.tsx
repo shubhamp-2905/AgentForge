@@ -46,38 +46,39 @@ export function ContactForm() {
   });
 
   async function onSubmit(data: InsertLead) {
-  setIsPending(true);
-  setIsSuccess(false);
+    setIsPending(true);
+    setIsSuccess(false);
 
-  try {
-    // Get from environment variables
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    try {
+      // Replace these with your EmailJS credentials
+      const serviceId = 'YOUR_SERVICE_ID';
+      const templateId = 'YOUR_TEMPLATE_ID';
+      const publicKey = 'YOUR_PUBLIC_KEY';
 
-    const templateParams = {
-      from_name: data.name,
-      from_email: data.email,
-      company: data.company || 'Not provided',
-      message: data.message,
-      to_name: 'AgentForge Team',
-    };
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        company: data.company || 'Not provided',
+        message: data.message,
+        to_name: 'AgentForge Team', // Your company name
+      };
 
-    await emailjs.send(serviceId, templateId, templateParams, publicKey);
-    
-    setIsSuccess(true);
-    form.reset();
-    
-    setTimeout(() => {
-      setIsSuccess(false);
-    }, 5000);
-  } catch (error: any) {
-    console.error('Failed to send email:', error);
-    alert(`Failed to send message: ${error.text || 'Please try again'}`);
-  } finally {
-    setIsPending(false);
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setIsSuccess(true);
+      form.reset();
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setIsPending(false);
+    }
   }
-}
 
   return (
     <div className="glass-panel p-8 rounded-2xl relative overflow-hidden border-2 border-primary/30">
@@ -185,18 +186,18 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="premium-button-primary w-full mt-4 font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full mt-4 px-6 py-3 bg-primary hover:bg-primary/90 text-white text-lg font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? (
-              <>
+              <span className="flex items-center justify-center">
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                 Sending...
-              </>
+              </span>
             ) : (
-              <>
+              <span className="flex items-center justify-center">
                 <Send className="mr-2 h-5 w-5" />
                 Send Message
-              </>
+              </span>
             )}
           </button>
         </form>

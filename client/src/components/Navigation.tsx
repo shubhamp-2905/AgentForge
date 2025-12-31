@@ -44,15 +44,26 @@ export function Navigation() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group cursor-pointer">
-          <div className="relative">
-            <Cpu className="w-8 h-8 text-primary transition-transform duration-300 group-hover:rotate-180" />
-            <div className="absolute inset-0 bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-          <span className="text-xl font-bold tracking-wide text-white">
-            AGENT<span className="text-primary">FORGE</span>
-          </span>
-        </Link>
+        <Link
+  href="/"
+  className="flex items-center gap-2.5 group cursor-pointer"
+>
+  <div className="relative flex items-center">
+    <img
+      src="/logo-af.png"   
+      alt="AgentForge Logo"
+      className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-105"
+    />
+
+    {/* subtle glow effect */}
+    <div className="absolute font-family: 'Space Grotesk', sans-serif; inset-0 bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+  </div>
+
+  <span className="text-xl  font-bold tracking-wide text-white">
+    AGENT<span className="text-primary ">FORGE</span>
+  </span>
+</Link>
+
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
