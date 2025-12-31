@@ -81,12 +81,20 @@ export function Footer() {
 
           {/* Brand */}
           <div>
+                      <div>
             <div className="flex items-center gap-2 mb-4">
-              <Cpu className="w-6 h-6 text-primary" />
-              <span className="text-xl font-bold text-white">
+              <img
+                src="/logo-af.png" // place logo in /public
+                alt="AgentForge Logo"
+                className="w-6 h-6 object-contain"
+              />
+
+              <span className="text-xl font-bold tracking-wide text-white">
                 AGENT<span className="text-primary">FORGE</span>
               </span>
             </div>
+          </div>
+
 
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Building the next generation of intelligent automation.
