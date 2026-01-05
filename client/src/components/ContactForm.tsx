@@ -51,9 +51,14 @@ export function ContactForm() {
 
     try {
       // Replace these with your EmailJS credentials
-      const serviceId = 'YOUR_SERVICE_ID';
-      const templateId = 'YOUR_TEMPLATE_ID';
-      const publicKey = 'YOUR_PUBLIC_KEY';
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      console.log('EmailJS Credentials:', { serviceId, templateId, publicKey });
+
+      // if (!serviceId || !templateId || !publicKey) {
+      //   throw new Error('EmailJS credentials are not configured');
+      // }
 
       const templateParams = {
         from_name: data.name,
